@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f1923">
+<title>VALOARENA | 5v5 Turnuvası</title>
+<style>
+:root{--red:#ff4655;--bg:#0f1923;--panel:#17232f;--panel2:#1e2d3b;--text:#f5f5f5;--muted:#b7c1cb;--line:rgba(255,255,255,.13)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(115deg,rgba(255,70,85,.12),transparent 40%),radial-gradient(ellipse at 90% 15%,rgba(255,70,85,.13),transparent 30rem)}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
+header{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:21px 0;border-bottom:1px solid var(--line)}
+.logo{font-weight:1000;letter-spacing:2px;font-size:1.15rem}.logo span{color:var(--red)}nav{display:flex;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:.92rem}nav a:hover{color:white}
+.hero{min-height:510px;padding:64px 0 48px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:35px;overflow:hidden}
+.eyebrow{color:var(--red);font-weight:900;text-transform:uppercase;letter-spacing:3px;font-size:.76rem}
+h1{font-size:clamp(3rem,7vw,5.7rem);line-height:.91;letter-spacing:-3px;margin:17px 0 22px}h1 span{color:var(--red)}
+p{line-height:1.7}.intro{color:var(--muted);max-width:610px;font-size:1.03rem}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;justify-content:center;align-items:center;padding:14px 18px;border:1px solid transparent;border-radius:5px;font-weight:900;cursor:pointer;transition:.2s;font-size:.94rem}
+.primary{background:var(--red);color:#fff}.primary:hover{background:#ff6672;transform:translateY(-2px)}.outline{border-color:var(--line);background:#ffffff08}.outline:hover{border-color:var(--red)}
+.agent-art{min-height:335px;position:relative;display:flex;align-items:center;justify-content:center;isolation:isolate}
+.agent-art:before{content:"";position:absolute;width:270px;height:270px;background:var(--red);opacity:.12;transform:rotate(45deg);border:2px solid var(--red);z-index:-1}
+.agent-art:after{content:"";position:absolute;width:220px;height:310px;border:1px solid rgba(255,70,85,.45);transform:skew(-12deg);z-index:-1}
+.agent-placeholder{width:min(100%,330px);height:330px;border-radius:12px;border:1px solid rgba(255,70,85,.5);background:linear-gradient(145deg,#263848,#111923);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px;box-shadow:0 25px 65px #0006}
+.agent-icon{font-size:5.5rem;filter:drop-shadow(0 8px 18px #ff465555)}.agent-placeholder strong{font-size:1.5rem;margin-top:8px}.agent-placeholder small{color:var(--muted);line-height:1.6;margin-top:8px}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:25px}.quick div{background:#ffffff09;border:1px solid var(--line);padding:13px;border-radius:6px}.quick strong{display:block;font-size:1rem}.quick small{display:block;color:var(--muted);margin-top:5px}
+section{padding:48px 0}.section-head{margin-bottom:24px}.section-head h2{font-size:clamp(1.8rem,4vw,2.7rem);margin:9px 0}.section-head p{color:var(--muted);margin:0}
+.mode{background:linear-gradient(135deg,var(--panel),#111b25);border:1px solid rgba(255,70,85,.45);border-radius:10px;padding:27px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}.mode h3{font-size:2rem;margin:8px 0}.mode p{color:var(--muted);margin:8px 0}.mode ul{color:#e1e7ed;line-height:1.9;padding-left:20px}.mode-badge{font-size:clamp(2rem,5vw,3.7rem);font-weight:1000;color:var(--red);border:2px solid var(--red);padding:20px 15px;transform:skew(-5deg)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.info{background:var(--panel);border:1px solid var(--line);padding:20px;border-radius:8px}.info strong{display:block;color:var(--red);margin-bottom:9px}.info span{color:var(--muted);line-height:1.6}
+.rules{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:23px}.rules ol{color:var(--muted);line-height:1.9;padding-left:22px}
+.comment-box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:25px}.comment-box label{display:block;font-weight:800;margin:15px 0 8px}.comment-box input,.comment-box textarea{width:100%;background:#0f1923;color:white;border:1px solid #3b4b59;border-radius:5px;padding:13px;font:inherit;outline:none}.comment-box input:focus,.comment-box textarea:focus{border-color:var(--red)}.comment-box textarea{min-height:115px;resize:vertical}.comment-box .btn{margin-top:14px}.comment-help{color:var(--muted);font-size:.87rem}.comments-list{display:grid;gap:10px;margin-top:20px}.comment{background:#0f1923;border:1px solid var(--line);border-radius:6px;padding:14px}.comment strong{color:var(--red)}.comment p{margin:7px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}.empty{color:var(--muted);padding:12px 0}
+.contact{display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(110deg,#ff465526,#ffffff05);border:1px solid #ff465555;border-radius:10px;padding:30px}.contact h2{margin:0 0 8px}.contact p{color:var(--muted);margin:0}
+footer{margin-top:30px;border-top:1px solid var(--line);padding:23px 0;color:var(--muted);font-size:.85rem}.fine{font-size:.8rem;color:#8e9ba7;margin-top:13px}
+@media(max-width:760px){header{align-items:flex-start;flex-direction:column}.hero{grid-template-columns:1fr;padding-top:45px}.agent-art{min-height:290px}.agent-placeholder{height:280px}.grid{grid-template-columns:1fr}.mode{grid-template-columns:1fr}.mode-badge{justify-self:start}.quick{grid-template-columns:1fr}h1{letter-spacing:-1.5px}.contact{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <a class="logo" href="#anasayfa">VALO<span>ARENA</span></a>
+  <nav><a href="#mod">5v5 Modu</a><a href="#detay">Detaylar</a><a href="#yorumlar">Yorumlar</a><a href="#kurallar">Kurallar</a><a href="#iletisim">İletişim</a></nav>
+</header>
+<main>
+  <div class="wrap hero" id="anasayfa">
+    <div>
+      <div class="eyebrow">Topluluk turnuvası • Takımını kur</div>
+      <h1>OYUNA GİR.<br><span>SAHNE SENİN.</span></h1>
+      <p class="intro">Beş kişilik takımını kur ve VALORANT 5v5 turnuvasında yerini al! Turnuva bilgilerini incele, yorum bırak ve kayıt için organizatöre Instagram üzerinden ulaş.</p>
+      <div class="buttons"><a class="btn primary" href="#mod">Turnuva detayları ↓</a><a class="btn outline" href="https://www.instagram.com/omerege5959/" target="_blank" rel="noopener noreferrer">Instagram'dan iletişim ↗</a></div>
+      <div class="quick"><div><strong>24 Ekim 2026</strong><small>Planlanan tarih</small></div><div><strong>5v5</strong><small>Tek oyun modu</small></div><div><strong>10 TL</strong><small>Oyuncu başına ödül bilgisi*</small></div></div>
+    </div>
+    <div class="agent-art" aria-label="VALORANT temalı karakter alanı">
+      <div class="agent-placeholder"><div class="agent-icon">⚡</div><strong>AGENT READY</strong><small>VALORANT temalı turnuva<br>Takımını hazırla!</small></div>
+    </div>
+  </div>
+
+  <section class="wrap" id="mod">
+    <div class="section-head"><div class="eyebrow">Tek mod • Tam takım</div><h2>5v5 Turnuva Modu</h2><p>Beş kişilik takım formatı: iletişim, strateji ve takım oyunu ön planda.</p></div>
+    <div class="mode">
+      <div><div class="eyebrow">Rekabet başlıyor</div><h3>5'e 5 • Takım savaşı</h3><p>Arkadaşlarınla tam kadro katıl. Takımını oluşturamadıysan organizatöre mesaj atıp bilgi al.</p>
+        <ul><li>Takım başına 5 oyuncu</li><li>Başvuruda takım adı ve oyuncu adları belirtilmeli</li><li>Harita ve maç formatı organizatör tarafından duyurulacak</li><li>Maç saati ve eşleşmeler katılımcılara ayrıca bildirilecek</li></ul>
+        <a class="btn primary" href="https://www.instagram.com/omerege5959/" target="_blank" rel="noopener noreferrer">5v5 için kayıt bilgisi al ↗</a>
+      </div>
+      <div class="mode-badge">5v5</div>
+    </div>
+  </section>
+
+  <section class="wrap" id="detay">
+    <div class="section-head"><div class="eyebrow">Turnuva rehberi</div><h2>Detaylar</h2></div>
+    <div class="grid">
+      <div class="info"><strong>📅 Tarih</strong><span>24 Ekim 2026 Cumartesi olarak planlandı. Başlangıç saati organizatör tarafından açıklanacak.</span></div>
+      <div class="info"><strong>🏆 Ödül</strong><span>Oyuncu başına 10 TL ödül bilgisi bulunuyor. Güncel ödül ve koşulları kayıt öncesi doğrula.</span></div>
+      <div class="info"><strong>📝 Kayıt</strong><span>Instagram'dan mesaj gönderirken takım adını, oyuncu adlarını ve katılım isteğini yaz.</span></div>
+    </div>
+    <p class="fine">*Saat, kontenjan, ödül ve maç kuralları kesinleştiğinde organizatör tarafından güncellenmelidir.</p>
+  </section>
+
+  <section class="wrap" id="yorumlar">
+    <div class="section-head"><div class="eyebrow">Topluluk alanı</div><h2>Yorumlar</h2><p>Turnuva hakkındaki düşünceni veya takım aradığını yazabilirsin.</p></div>
+    <div class="comment-box">
+      <form id="commentForm">
+        <label for="commentName">İsmin veya oyun içi adın</label>
+        <input id="commentName" maxlength="30" placeholder="Örn. Wexo" required>
+        <label for="commentText">Yorumun</label>
+        <textarea id="commentText" maxlength="500" placeholder="Yorumunu buraya yaz..." required></textarea>
+        <button class="btn primary" type="submit">Yorumu ekle</button>
+        <p class="comment-help">Bilgi: Bu örnek sürümde yorumlar yalnızca bu tarayıcıda saklanır. Herkesin görebileceği ortak yorum alanı için sunucu/veritabanı kurulması gerekir.</p>
+      </form>
+      <div class="comments-list" id="commentsList" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="kurallar">
+    <div class="section-head"><div class="eyebrow">Adil oyun</div><h2>Kurallar</h2></div>
+    <div class="rules"><ol>
+      <li>5 kişilik takım kadronu ve oyun içi adlarını kayıt sırasında bildir.</li>
+      <li>Maç saatinden önce hazır ol ve organizatörün duyurularını takip et.</li>
+      <li>Hile, hakaret ve kasıtlı maç bozma kabul edilmez.</li>
+      <li>Harita, maç sistemi, beraberlik ve bağlantı sorunlarına ilişkin kurallar maçlardan önce açıklanır.</li>
+      <li>Yorum alanında kişisel bilgilerini paylaşma; saygılı ol.</li>
+    </ol></div>
+  </section>
+
+  <section class="wrap" id="iletisim">
+    <div class="contact"><div><h2>Turnuvaya katılacak mısın?</h2><p>Kayıt, saat, kontenjan ve maç ayrıntıları için Instagram'dan yaz.<br><strong>@omerege5959</strong></p></div><a class="btn primary" href="https://www.instagram.com/omerege5959/" target="_blank" rel="noopener noreferrer">İletişim ↗</a></div>
+  </section>
+</main>
+<footer><div class="wrap">VALOARENA • Topluluk turnuvası sayfası. VALORANT ve karakterleri ilgili hak sahiplerine aittir.</div></footer>
+<script>
+const form = document.getElementById('commentForm');
+const list = document.getElementById('commentsList');
+const STORAGE_KEY = 'valoarena-comments-v1';
+function getComments(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch{return []}}
+function renderComments(){
+  const comments=getComments(); list.replaceChildren();
+  if(!comments.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='Henüz yorum yok. İlk yorumu sen bırak!';list.appendChild(empty);return}
+  comments.slice().reverse().forEach(item=>{
+    const card=document.createElement('div');card.className='comment';
+    const name=document.createElement('strong');name.textContent=item.name;
+    const message=document.createElement('p');message.textContent=item.text;
+    card.append(name,message);list.appendChild(card);
+  });
+}
+form.addEventListener('submit',event=>{
+  event.preventDefault();
+  const name=document.getElementById('commentName').value.trim();
+  const message=document.getElementById('commentText').value.trim();
+  if(!name||!message)return;
+  const comments=getComments();comments.push({name,text:message});
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(comments));renderComments();form.reset()}
+  catch{alert('Yorum tarayıcıya kaydedilemedi. Depolama alanını kontrol et.')}
+});
+renderComments();
+</script>
+</body>
+</html>
